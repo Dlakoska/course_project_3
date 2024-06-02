@@ -45,4 +45,4 @@ def mask_information(info_from_to):
     if "Счет" in title:
         return "{} **{}".format(title, part_to_mask[-4:])
     else:
-        return "{} {} {}** **** {}".format(title, part_to_mask[:3], part_to_mask[4:6], part_to_mask[12:])
+        return "{} {} {}** **** {}".format(title, part_to_mask[:4], part_to_mask[4:6], part_to_mask[12:])
