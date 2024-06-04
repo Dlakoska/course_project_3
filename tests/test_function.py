@@ -1,12 +1,18 @@
+import pytest
+
 from src.functions import mask_information, load_last_operations, load_operations
 
 
-def test_load_operations():
-    assert load_operations() == [{"id": "Операция №6", "state": "EXECUTED", "date": "2013-08-26T10:50:58.294041"},
-                                 {"id": "Операция №3", "state": "EXECUTED", "date": "2019-08-26T10:50:58.294041"},
-                                 {"id": "Операция №2", "state": "EXECUTED", "date": "2011-08-26T10:50:58.294041"},
-                                 {"id": "Операция №1", "state": "EXECUTED", "date": "2020-08-26T10:50:58.294041"},
-                                 {"id": "Операция №4", "state": "EXECUTED", "date": "2022-08-26T10:50:58.294041"}]
+@pytest.fixture
+def operations_for_test():
+    operation = [{'id': 441945886, 'state': 'EXECUTED', 'date': '2019-08-26T10:50:58.294041',
+                  'operationAmount': {'amount': '31957.58', 'currency': {'name': 'руб.', 'code': 'RUB'}},
+                  'description': 'Перевод организации', 'from': 'Maestro 1596837868705199', 'to': 'Счет 64686473678894779589'}]
+    return operation
+
+
+def test_load_operations(operations_for_test):
+    assert load_operations()[0] == operations_for_test[0]
 
 
 def test_load_last_operations():
