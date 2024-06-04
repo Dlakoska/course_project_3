@@ -6,7 +6,7 @@ def load_operations():
     """
     Загружает список из выполненных операций
     """
-    with open('../operations.json', 'r', encoding='utf') as file:
+    with open('operations.json', 'r', encoding='utf') as file:
         read_file = file.read()
         loaded_operations = json.loads(read_file)
 
@@ -46,3 +46,6 @@ def mask_information(info_from_to):
         return "{} **{}".format(title, part_to_mask[-4:])
     else:
         return "{} {} {}** **** {}".format(title, part_to_mask[:4], part_to_mask[4:6], part_to_mask[12:])
+
+
+print(load_operations())
